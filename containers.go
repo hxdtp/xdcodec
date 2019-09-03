@@ -68,7 +68,7 @@ func (c *Codec) ReadList(l *List) error {
 	}
 
 	for i := uint8(0); i < nelem; i++ {
-		e, err := c.readTyped()
+		e, err := c.ReadTyped()
 		if err != nil {
 			return err
 		}
@@ -85,7 +85,7 @@ func (c *Codec) WriteList(l List) error {
 
 	c.WriteUint8(uint8(n))
 	for _, e := range l {
-		if err := c.writeTyped(e); err != nil {
+		if err := c.WriteTyped(e); err != nil {
 			return err
 		}
 	}
@@ -110,7 +110,7 @@ func (c *Codec) ReadMap(m *Map) error {
 		if err := c.ReadSizedString(&k); err != nil {
 			return err
 		}
-		v, err := c.readTyped()
+		v, err := c.ReadTyped()
 		if err != nil {
 			return err
 		}
@@ -140,14 +140,14 @@ func (c *Codec) WriteMap(m Map) error {
 	c.WriteUint8(uint8(n))
 	for _, k := range keys {
 		c.WriteSizedString(k)
-		if err := c.writeTyped(m[k]); err != nil {
+		if err := c.WriteTyped(m[k]); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func (c *Codec) readTyped() (t Typed, err error) {
+func (c *Codec) ReadTyped() (t Typed, err error) {
 	if c.err != nil {
 		err = c.err
 		return
@@ -200,7 +200,7 @@ func (c *Codec) readTyped() (t Typed, err error) {
 	return
 }
 
-func (c *Codec) writeTyped(t Typed) error {
+func (c *Codec) WriteTyped(t Typed) error {
 	if c.err != nil {
 		return c.err
 	}
