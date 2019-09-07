@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	ErrExceedContainerCap = errors.New("encoding: containers can only contain 255 elements")
+	ErrExceedContainerCap = errors.New("xdcodec: containers can only contain 255 elements")
 )
 
 const (
