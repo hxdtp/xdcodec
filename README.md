@@ -40,3 +40,5 @@ The Encoding Format:
     | TypedString | 's'    | sized string      |
     | TypedList   | 'l'    | []Typed           |
     | TypedMap    | 'm'    | map[string]Typed  |
+
+    **NOTE**: The **limitation** for varints is that, the larger numbers may require more than 8 bytes, maybe I will improve it in the future.
