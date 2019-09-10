@@ -195,7 +195,7 @@ func (c *Codec) ReadTyped() (t Typed, err error) {
 			t = TypedMap{Map: m}
 		}
 	default:
-		err = fmt.Errorf("unknown type: %v", reflect.TypeOf(t))
+		err = fmt.Errorf("xdcodec: unknown type: %v", reflect.TypeOf(t))
 	}
 	return
 }
@@ -229,7 +229,7 @@ func (c *Codec) WriteTyped(t Typed) error {
 		c.Write([]byte{typeMap})
 		c.WriteMap(x.Map)
 	default:
-		return fmt.Errorf("unsupported type: %v", reflect.TypeOf(t))
+		return fmt.Errorf("xdcodec: unsupported type: %v", reflect.TypeOf(t))
 	}
 	return c.err
 }

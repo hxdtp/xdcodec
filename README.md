@@ -1,4 +1,4 @@
-## XDcodec
+## XD Codec
 
 It is just a [binary](https://golang.org/pkg/encoding/binary/)-like package, inspired by [TLV](https://en.wikipedia.org/wiki/Type-length-value), [amqp.table](https://www.amqp.org/), [Protocol Buffers](https://developers.google.com/protocol-buffers/), etc.
 
