@@ -54,7 +54,7 @@ func (c *Codec) ReadList(l *List) error {
 	if b, c.err = c.rw.ReadByte(); c.err != nil {
 		return c.err
 	}
-	nelem := uint8(b)
+	nelem := b
 	if nelem == 0 {
 		return nil
 	}
@@ -97,7 +97,7 @@ func (c *Codec) ReadMap(m *Map) error {
 	if b, c.err = c.rw.ReadByte(); c.err != nil {
 		return c.err
 	}
-	nkv := uint8(b)
+	nkv := b
 	if nkv == 0 {
 		return nil
 	}
